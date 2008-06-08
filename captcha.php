@@ -68,6 +68,9 @@ class SimpleCaptcha {
         array(214,36,7),  // red
     );
 
+    /** Shadow color in RGB-array or false */
+    public $shadowColor = false; //array(0, 0, 0);
+
     /**
      * Font configuration
      *
@@ -175,6 +178,15 @@ class SimpleCaptcha {
         // Foreground color
         $color           = $this->colors[mt_rand(0, sizeof($this->colors)-1)];
         $this->GdFgColor = imagecolorallocate($this->im, $color[0], $color[1], $color[2]);
+
+        // Shadow color
+        if (!empty($this->shadowColor)) {
+            $this->GdShadowColor = imagecolorallocate($this->im,
+                $this->shadowColor[0],
+                $this->shadowColor[1],
+                $this->shadowColor[2]
+            );
+        }
     }
 
 
@@ -296,8 +308,16 @@ class SimpleCaptcha {
         for ($i=0; $i<$length; $i++) {
             $degree   = rand($this->maxRotation*-1, $this->maxRotation);
             $fontsize = rand($fontcfg['minSize'], $fontcfg['maxSize'])*$this->scale;
-            $coords   = imagettftext($this->im, $fontsize, $degree, $x, $y,
-                $this->GdFgColor, $fontfile, substr($text, $i, 1));
+            $letter   = substr($text, $i, 1);
+
+            if ($this->shadowColor) {
+                $coords = imagettftext($this->im, $fontsize, $degree,
+                    $x+$this->scale, $y+$this->scale,
+                    $this->GdShadowColor, $fontfile, $letter);
+            }
+            $coords = imagettftext($this->im, $fontsize, $degree,
+                $x, $y,
+                $this->GdFgColor, $fontfile, $letter);
             $x += ($coords[2]-$x) + ($fontcfg['condensation']*$this->scale);
         }
     }
