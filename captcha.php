@@ -75,15 +75,20 @@ class SimpleCaptcha {
      * Font configuration
      *
      * - font: TTF file
-     * - condensation: relative pixel space between character
+     * - spacing: relative pixel space between character
      * - minSize: min font size
      * - maxSize: max font size
      */
     public $fonts = array(
-        'Candice'  => array('condensation' => -1, 'minSize' => 28, 'maxSize' => 36, 'font' => 'Candice.ttf'),
-        'Jura'     => array('condensation' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => 'Jura.ttf'),
-        'Times'    => array('condensation' => -2, 'minSize' => 28, 'maxSize' => 40, 'font' => 'TimesNewRomanBold.ttf'),
-        'VeraSans' => array('condensation' => -1, 'minSize' => 20, 'maxSize' => 33, 'font' => 'VeraSansBold.ttf'),
+        'Antykwa'  => array('spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => 'AntykwaBold.ttf'),
+        'Candice'  => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => 'Candice.ttf'),
+        'DingDongDaddy' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => 'Ding-DongDaddyO.ttf'),
+        'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 42, 'font' => 'Duality.ttf'),
+        'Heineken' => array('spacing' => -2,'minSize' => 24, 'maxSize' => 37, 'font' => 'Heineken.ttf'),
+        'Jura'     => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => 'Jura.ttf'),
+        'StayPuft' => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 36, 'font' => 'StayPuft.ttf'),
+        'Times'    => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => 'TimesNewRomanBold.ttf'),
+        'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 33, 'font' => 'VeraSansBold.ttf'),
     );
 
     /** Wave configuracion in X and Y axes */
@@ -100,7 +105,7 @@ class SimpleCaptcha {
 
     /** Debug? */
     public $debug = false;
-
+    
 
     /** GD image */
     public $im;
@@ -297,8 +302,8 @@ class SimpleCaptcha {
      * Text insertion
      */
     protected function WriteText($text) {
-        // Select the font configuration
-        $fontcfg  = $this->fonts[array_rand($this->fonts)];
+            // Select the font configuration
+            $fontcfg  = $this->fonts[array_rand($this->fonts)];
         $fontfile = 'fonts/'.$fontcfg['font'];
 
         // Text generation (char by char)
@@ -318,7 +323,7 @@ class SimpleCaptcha {
             $coords = imagettftext($this->im, $fontsize, $degree,
                 $x, $y,
                 $this->GdFgColor, $fontfile, $letter);
-            $x += ($coords[2]-$x) + ($fontcfg['condensation']*$this->scale);
+            $x += ($coords[2]-$x) + ($fontcfg['spacing']*$this->scale);
         }
     }
 
@@ -374,8 +379,8 @@ class SimpleCaptcha {
      * File generation
      */
     protected function WriteImage() {
-        header("Content-type: image/jpeg");
-        imagejpeg($this->im, null, 80);
+            header("Content-type: image/jpeg");
+            imagejpeg($this->im, null, 80);
     }
 
 
