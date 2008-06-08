@@ -19,6 +19,9 @@ $captcha = new SimpleCaptcha();
 // Change configuration...
 //$captcha->wordsFile = 'words/es.txt';
 //$captcha->session_var = 'secretword';
+//$captcha->imageFormat = 'png';
+
+
 
 $captcha->CreateImage();
 
@@ -100,12 +103,18 @@ class SimpleCaptcha {
     /** letter rotation clockwise */
     public $maxRotation = 8;
 
-    /** Internal image size factor (for better image quality) */
+    /**
+     * Internal image size factor (for better image quality)
+     * 1: low, 2: medium, 3: high
+     */
     public $scale = 2;
 
     /** Debug? */
     public $debug = false;
     
+    /** Image format: jpeg or png */
+    public $imageFormat = 'jpeg';
+
 
     /** GD image */
     public $im;
@@ -379,8 +388,13 @@ class SimpleCaptcha {
      * File generation
      */
     protected function WriteImage() {
+        if ($this->imageFormat == 'png') {
+            header("Content-type: image/png");
+            imagepng($this->im);
+        } else {
             header("Content-type: image/jpeg");
             imagejpeg($this->im, null, 80);
+        }
     }
 
 
