@@ -939,7 +939,7 @@ afrontar
 afrutado
 aftoso  
 afuera  
-ag"uero 
+aguero 
 agaloco 
 agarico 
 agerato 
@@ -2426,7 +2426,7 @@ arenzata
 areola  
 areolar 
 arete   
-arg"uir 
+arguir 
 argon   
 argamasa
 argelino
@@ -5797,8 +5797,8 @@ cifosis
 cifra   
 cifrado 
 cifrar  
-cig"uena
-cig"ueno
+ciguena
+cigueno
 cigala  
 cigarron
 cigarra 
@@ -7186,7 +7186,7 @@ desacoto
 desafio 
 desafear
 desafiar
-desag"ue
+desague
 desaguar
 desahogo
 desainar
@@ -8653,7 +8653,7 @@ enhuecar
 enhuerar
 enigma  
 enjaezar
-enjag"ue
+enjague
 enjalma 
 enjalmar
 enjambre
@@ -9728,7 +9728,7 @@ exagonal
 exaltar 
 examen  
 examinar
-exang"ue
+exangue
 exantema
 exarca  
 excavar 
@@ -9923,7 +9923,7 @@ faena
 faenar  
 faenero 
 faeton  
-fag"ueno
+fagueno
 fagaceo 
 fagocito
 fagot   
@@ -10638,12 +10638,12 @@ futbolin
 futesa  
 futre   
 futuro  
-g"uena  
-g"uelfo 
-g"uillin
-g"uin   
-g"uira  
-g"uisqui
+guena  
+guelfo 
+guillin
+guin   
+guira  
+guisqui
 galata  
 galibo  
 galico  
@@ -11803,7 +11803,7 @@ hierbajo
 hierbal 
 hiero   
 hierro  
-hig"uero
+higuero
 higate  
 higiene 
 higuana 
@@ -14304,7 +14304,7 @@ maestril
 maestro 
 mafia   
 mafioso 
-mag"ueto
+magueto
 magin   
 magister
 magana  
@@ -18085,7 +18085,7 @@ pinciano
 pindonga
 pineal  
 pineda  
-ping"ue 
+pingue 
 pinga   
 pingajo 
 pingar  
@@ -18168,7 +18168,7 @@ pirca
 pircar  
 pirco   
 pirexia 
-pirg"uin
+pirguin
 pirhuin 
 pirineo 
 pirita  
@@ -25042,7 +25042,7 @@ yazgas
 yazgo   
 yeismo  
 yedra   
-yeg"uero
+yeguero
 yegua   
 yeguada 
 yeguar  
