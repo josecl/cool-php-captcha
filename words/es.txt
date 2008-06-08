@@ -939,7 +939,6 @@ afrontar
 afrutado
 aftoso  
 afuera  
-aguero 
 agaloco 
 agarico 
 agerato 
@@ -2426,7 +2425,6 @@ arenzata
 areola  
 areolar 
 arete   
-arguir 
 argon   
 argamasa
 argelino
@@ -2630,6 +2628,8 @@ asertivo
 aserto  
 asertor 
 asesar  
+asesinar
+asesino 
 asesoria
 asesor  
 asesorar
@@ -5797,8 +5797,6 @@ cifosis
 cifra   
 cifrado 
 cifrar  
-ciguena
-cigueno
 cigala  
 cigarron
 cigarra 
@@ -7186,7 +7184,6 @@ desacoto
 desafio 
 desafear
 desafiar
-desague
 desaguar
 desahogo
 desainar
@@ -8653,7 +8650,6 @@ enhuecar
 enhuerar
 enigma  
 enjaezar
-enjague
 enjalma 
 enjalmar
 enjambre
@@ -9463,6 +9459,7 @@ estipula
 estitico
 estolido
 estomago
+estupido
 estanar 
 estanero
 estano  
@@ -9728,7 +9725,6 @@ exagonal
 exaltar 
 examen  
 examinar
-exangue
 exantema
 exarca  
 excavar 
@@ -9923,7 +9919,6 @@ faena
 faenar  
 faenero 
 faeton  
-fagueno
 fagaceo 
 fagocito
 fagot   
@@ -10638,12 +10633,6 @@ futbolin
 futesa  
 futre   
 futuro  
-guena  
-guelfo 
-guillin
-guin   
-guira  
-guisqui
 galata  
 galibo  
 galico  
@@ -11803,7 +11792,6 @@ hierbajo
 hierbal 
 hiero   
 hierro  
-higuero
 higate  
 higiene 
 higuana 
@@ -12004,6 +11992,7 @@ horqueta
 horrar  
 horrendo
 horrero 
+horrible
 horridez
 horror  
 hortal  
@@ -14304,7 +14293,6 @@ maestril
 maestro 
 mafia   
 mafioso 
-magueto
 magin   
 magister
 magana  
@@ -17779,6 +17767,8 @@ percusor
 percutir
 percutor
 perdon  
+perdedor
+perder  
 perdigon
 perdigar
 perdiz  
@@ -18085,7 +18075,6 @@ pinciano
 pindonga
 pineal  
 pineda  
-pingue 
 pinga   
 pingajo 
 pingar  
@@ -18168,7 +18157,6 @@ pirca
 pircar  
 pirco   
 pirexia 
-pirguin
 pirhuin 
 pirineo 
 pirita  
@@ -21461,6 +21449,7 @@ sartal
 sartorio
 sastre  
 satan   
+satanico
 satelite
 saten   
 satin   
@@ -21772,6 +21761,7 @@ setenta
 setero  
 seudo   
 severo  
+sexologo
 sexenio 
 sexismo 
 sexista 
@@ -21783,6 +21773,8 @@ sexteto
 sextillo
 sextina 
 sexto   
+sexuado 
+sexual  
 sheriff 
 siutico 
 sialismo
@@ -22346,6 +22338,9 @@ sufridor
 sufrir  
 sufusion
 sugerir 
+suicida 
+suicidar
+suicidio
 suite   
 suizo   
 sujecion
@@ -24821,6 +24816,7 @@ violaceo
 violin  
 violon  
 viola   
+violador
 violar  
 violento
 violero 
@@ -25042,7 +25038,6 @@ yazgas
 yazgo   
 yeismo  
 yedra   
-yeguero
 yegua   
 yeguada 
 yeguar  
