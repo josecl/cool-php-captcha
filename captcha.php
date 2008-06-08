@@ -58,10 +58,10 @@ class SimpleCaptcha {
     /** Sessionname to store the original text */
     public $session_var = 'captcha';
 
-    /** Background color in RGB */
+    /** Background color in RGB-array */
     public $backgroundColor = array(255, 255, 255);
 
-    /** Foreground colors in RGB */
+    /** Foreground colors in RGB-array */
     public $colors = array(
         array(27,78,181), // blue
         array(22,163,35), // green
@@ -167,8 +167,8 @@ class SimpleCaptcha {
         // Background color
         $this->GdBgColor = imagecolorallocate($this->im,
             $this->backgroundColor[0],
-            $this->backgroundColor[0],
-            $this->backgroundColor[0]
+            $this->backgroundColor[1],
+            $this->backgroundColor[2]
         );
         imagefilledrectangle($this->im, 0, 0, $this->width*$this->scale, $this->height*$this->scale, $this->GdBgColor);
 
@@ -298,7 +298,7 @@ class SimpleCaptcha {
             $fontsize = rand($fontcfg['minSize'], $fontcfg['maxSize'])*$this->scale;
             $coords   = imagettftext($this->im, $fontsize, $degree, $x, $y,
                 $this->GdFgColor, $fontfile, substr($text, $i, 1));
-            $x       += ($coords[2]-$x) + ($fontcfg['condensation']*$this->scale);
+            $x += ($coords[2]-$x) + ($fontcfg['condensation']*$this->scale);
         }
     }
 
