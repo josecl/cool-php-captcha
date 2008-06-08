@@ -20,6 +20,8 @@ $captcha = new SimpleCaptcha();
 //$captcha->wordsFile = 'words/es.txt';
 //$captcha->session_var = 'secretword';
 //$captcha->imageFormat = 'png';
+//$captcha->scale = 3; $captcha->blur = true;
+
 
 
 
@@ -114,6 +116,12 @@ class SimpleCaptcha {
      */
     public $scale = 2;
 
+    /** 
+     * Blur effect for better image quality (but slower image processing).
+     * Better image results with scale=3
+     */
+    public $blur = false;
+
     /** Debug? */
     public $debug = false;
     
@@ -157,6 +165,9 @@ class SimpleCaptcha {
 
         /** Transformations */
         $this->WaveImage();
+        if ($this->blur) {
+            imagefilter($this->im, IMG_FILTER_GAUSSIAN_BLUR);
+        }
         $this->ReduceImage();
 
 
