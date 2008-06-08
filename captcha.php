@@ -92,20 +92,20 @@ class SimpleCaptcha {
     public $fonts = array(
         'Antykwa'  => array('spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => 'AntykwaBold.ttf'),
         'Candice'  => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => 'Candice.ttf'),
-        'DingDongDaddy' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => 'Ding-DongDaddyO.ttf'),
-        'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 42, 'font' => 'Duality.ttf'),
-        'Heineken' => array('spacing' => -2,'minSize' => 24, 'maxSize' => 37, 'font' => 'Heineken.ttf'),
+        'DingDong' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => 'Ding-DongDaddyO.ttf'),
+        'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 38, 'font' => 'Duality.ttf'),
+        'Heineken' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 34, 'font' => 'Heineken.ttf'),
         'Jura'     => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => 'Jura.ttf'),
-        'StayPuft' => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 36, 'font' => 'StayPuft.ttf'),
+        'StayPuft' => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 32, 'font' => 'StayPuft.ttf'),
         'Times'    => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => 'TimesNewRomanBold.ttf'),
-        'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 33, 'font' => 'VeraSansBold.ttf'),
+        'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 28, 'font' => 'VeraSansBold.ttf'),
     );
 
     /** Wave configuracion in X and Y axes */
-    public $Yperiod    = 13;
-    public $Yamplitude = 15;
-    public $Xperiod    = 12;
-    public $Xamplitude = 4;
+    public $Yperiod    = 12;
+    public $Yamplitude = 14;
+    public $Xperiod    = 11;
+    public $Xamplitude = 5;
 
     /** letter rotation clockwise */
     public $maxRotation = 8;
@@ -371,18 +371,20 @@ class SimpleCaptcha {
      */
     protected function WaveImage() {
         // X-axis wave generation
+        $xp = $this->scale*$this->Xperiod*rand(1,3);
         $k = rand(0, 100);
         for ($i = 0; $i < ($this->width*$this->scale); $i++) {
             imagecopy($this->im, $this->im,
-                $i-1, sin($k+$i/($this->scale*$this->Xperiod)) * ($this->scale*$this->Xamplitude),
+                $i-1, sin($k+$i/$xp) * ($this->scale*$this->Xamplitude),
                 $i, 0, 1, $this->height*$this->scale);
         }
 
         // Y-axis wave generation
         $k = rand(0, 100);
+        $yp = $this->scale*$this->Yperiod*rand(1,2);
         for ($i = 0; $i < ($this->height*$this->scale); $i++) {
             imagecopy($this->im, $this->im,
-                sin($k+$i/($this->scale*$this->Yperiod)) * ($this->scale*$this->Yamplitude), $i-1,
+                sin($k+$i/$yp) * ($this->scale*$this->Yamplitude), $i-1,
                 0, $i, $this->width*$this->scale, 1);
         }
     }
