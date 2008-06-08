@@ -55,7 +55,12 @@ class SimpleCaptcha {
     /** Min word length (for non-dictionary random text generation) */
     public $minWordLength = 5;
 
-    /** Max word length (for non-dictionary random text generation) */
+    /**
+     * Max word length (for non-dictionary random text generation)
+     * 
+     * Used for dictionary words indicating the word-length
+     * for font-size modification purposes
+     */
     public $maxWordLength = 8;
 
     /** Sessionname to store the original text */
@@ -140,24 +145,30 @@ class SimpleCaptcha {
     public function CreateImage() {
         $ini = microtime(true);
 
+        /** Initialization */
         $this->ImageAllocate();
+        
+        /** Text insertion */
         $text = $this->GetCaptchaText();
-        $this->WriteText($text);
+        $fontcfg  = $this->fonts[array_rand($this->fonts)];
+        $this->WriteText($text, $fontcfg);
 
         $_SESSION[$this->session_var] = $text;
 
+        /** Transformations */
         $this->WaveImage();
         $this->ReduceImage();
 
 
         if ($this->debug) {
             imagestring($this->im, 1, 1, $this->height-8,
-                "$text ".round((microtime(true)-$ini)*1000)."ms",
+                "$text {$fontcfg['font']} ".round((microtime(true)-$ini)*1000)."ms",
                 $this->GdFgColor
             );
         }
 
 
+        /** Output */
         $this->WriteImage();
         $this->Cleanup();
     }
@@ -310,10 +321,16 @@ class SimpleCaptcha {
     /**
      * Text insertion
      */
-    protected function WriteText($text) {
+    protected function WriteText($text, $fontcfg = array()) {
+        if (empty($fontcfg)) {
             // Select the font configuration
             $fontcfg  = $this->fonts[array_rand($this->fonts)];
+        }
         $fontfile = 'fonts/'.$fontcfg['font'];
+
+        /** Increase font-size for shortest words: 9% for each glyp missing */
+        $lettersMissing = $this->maxWordLength-strlen($text);
+        $fontSizefactor = 1+($lettersMissing*0.09);
 
         // Text generation (char by char)
         $x      = 20*$this->scale;
@@ -321,7 +338,7 @@ class SimpleCaptcha {
         $length = strlen($text);
         for ($i=0; $i<$length; $i++) {
             $degree   = rand($this->maxRotation*-1, $this->maxRotation);
-            $fontsize = rand($fontcfg['minSize'], $fontcfg['maxSize'])*$this->scale;
+            $fontsize = rand($fontcfg['minSize'], $fontcfg['maxSize'])*$this->scale*$fontSizefactor;
             $letter   = substr($text, $i, 1);
 
             if ($this->shadowColor) {
