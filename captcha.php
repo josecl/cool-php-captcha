@@ -83,6 +83,15 @@ class SimpleCaptcha {
     /** Dictionary word file (empty for randnom text) */
     public $wordsFile = 'words/en.php';
 
+    /**
+     * Path for resource files (fonts, words, etc.)
+     *
+     * "resources" by default. For security reasons, is better move this
+     * directory to another location outise the web server
+     *
+     */
+    public $resourcesPath = 'resources';
+
     /** Min word length (for non-dictionary random text generation) */
     public $minWordLength = 5;
 
@@ -321,12 +330,19 @@ class SimpleCaptcha {
             return false;
         }
 
-        $fp     = fopen($this->wordsFile, "r");
+        // Full path of words file
+        if (substr($this->wordsFile, 0, 1) == '/') {
+            $wordsfile = $this->wordsFile;
+        } else {
+            $wordsfile = $this->resourcesPath.'/'.$this->wordsFile;
+        }
+
+        $fp     = fopen($wordsfile, "r");
         $length = strlen(fgets($fp));
         if (!$length) {
             return false;
         }
-        $line   = rand(1, (filesize($this->wordsFile)/$length)-2);
+        $line   = rand(1, (filesize($wordsfile)/$length)-2);
         if (fseek($fp, $length*$line) == -1) {
             return false;
         }
@@ -366,7 +382,10 @@ class SimpleCaptcha {
             // Select the font configuration
             $fontcfg  = $this->fonts[array_rand($this->fonts)];
         }
-        $fontfile = 'fonts/'.$fontcfg['font'];
+
+        // Full path of font file
+        $fontfile = $this->resourcesPath.'/fonts/'.$fontcfg['font'];
+
 
         /** Increase font-size for shortest words: 9% for each glyp missing */
         $lettersMissing = $this->maxWordLength-strlen($text);
