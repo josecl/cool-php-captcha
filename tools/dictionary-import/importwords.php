@@ -35,6 +35,7 @@ if (!file_exists($argv[1])) {
 
 $fp  = fopen($argv[1], "r");
 $fp2 = fopen($argv[2], "w");
+fwrite($fp2, "<?php /*\n");
 
 while ($lin = fgets($fp)) {
     $lin    = trim(strtolower($lin));
@@ -44,6 +45,7 @@ while ($lin = fgets($fp)) {
         fwrite($fp2, "$lin\n");
     }
 }
+fwrite($fp2, "*/    ?>\n");
 
 fclose($fp);
 fclose($fp2);

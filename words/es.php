@@ -1,3 +1,4 @@
+<?php /*
 africa  
 angela  
 abaco   
@@ -25298,3 +25299,4 @@ zurrusco
 zurubi  
 zurupeto
 zutano  
+*/    ?>

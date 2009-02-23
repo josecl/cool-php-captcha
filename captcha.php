@@ -17,7 +17,7 @@ session_start();
 $captcha = new SimpleCaptcha();
 
 // Change configuration...
-//$captcha->wordsFile = 'words/es.txt';
+//$captcha->wordsFile = 'words/es.php';
 //$captcha->session_var = 'secretword';
 //$captcha->imageFormat = 'png';
 //$captcha->scale = 3; $captcha->blur = true;
@@ -52,7 +52,7 @@ class SimpleCaptcha {
     public $height = 70;
 
     /** Dictionary word file (empty for randnom text) */
-    public $wordsFile = 'words/en.txt';
+    public $wordsFile = 'words/en.php';
 
     /** Min word length (for non-dictionary random text generation) */
     public $minWordLength = 5;
@@ -297,7 +297,7 @@ class SimpleCaptcha {
         if (!$length) {
             return false;
         }
-        $line   = rand(0, (filesize($this->wordsFile)/$length)-1);
+        $line   = rand(1, (filesize($this->wordsFile)/$length)-2);
         if (fseek($fp, $length*$line) == -1) {
             return false;
         }
