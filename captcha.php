@@ -23,6 +23,7 @@ $captcha = new SimpleCaptcha();
 //$captcha->session_var = 'secretword';
 //$captcha->imageFormat = 'png';
 //$captcha->scale = 3; $captcha->blur = true;
+//$captcha->resourcesPath = "/var/cool-php-captcha/resources";
 
 // OPTIONAL Simple autodetect language example
 /*
