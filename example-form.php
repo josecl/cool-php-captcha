@@ -40,6 +40,8 @@ if (!empty($_REQUEST['captcha'])) {
         $style = "background-color: #CCFF99";
     }
 
+    $request_captcha = htmlspecialchars($_REQUEST['captcha']);
+
     echo <<<HTML
         <div id="result" style="$style">
         <h2>$captcha_message</h2>
@@ -50,7 +52,7 @@ if (!empty($_REQUEST['captcha'])) {
         </tr>
         <tr>
             <td>Form CAPTCHA:</td>
-            <td>{$_REQUEST['captcha']}</td>
+            <td>$request_captcha</td>
         </tr>
         </table>
         </div>
