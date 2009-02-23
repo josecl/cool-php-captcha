@@ -204,7 +204,7 @@ class SimpleCaptcha {
 
         /** Transformations */
         $this->WaveImage();
-        if ($this->blur) {
+        if ($this->blur && function_exists('imagefilter')) {
             imagefilter($this->im, IMG_FILTER_GAUSSIAN_BLUR);
         }
         $this->ReduceImage();
@@ -353,7 +353,7 @@ class SimpleCaptcha {
 
         /** Change ramdom volcals */
         if ($extended) {
-            $text   = str_split($text, 1);
+            $text   = preg_split('//', $text, -1, PREG_SPLIT_NO_EMPTY);
             $vocals = array('a', 'e', 'i', 'o', 'u');
             foreach ($text as $i => $char) {
                 if (mt_rand(0, 1) && in_array($char, $vocals)) {
@@ -467,7 +467,7 @@ class SimpleCaptcha {
      * File generation
      */
     protected function WriteImage() {
-        if ($this->imageFormat == 'png') {
+        if ($this->imageFormat == 'png' && function_exists('imagepng')) {
             header("Content-type: image/png");
             imagepng($this->im);
         } else {
