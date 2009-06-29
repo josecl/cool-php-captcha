@@ -6,7 +6,7 @@
  * @license GPLv3
  * @link    http://code.google.com/p/cool-php-captcha
  * @package captcha
- * @version 0.3.0
+ * @version 0.3
  *
  */
 
