@@ -117,8 +117,8 @@ class SimpleCaptcha {
         array(214,36,7),  // red
     );
 
-    /** Shadow color in RGB-array or false */
-    public $shadowColor = false; //array(0, 0, 0);
+    /** Shadow color in RGB-array or null */
+    public $shadowColor = null; //array(0, 0, 0);
 
     /**
      * Font configuration
@@ -255,7 +255,7 @@ class SimpleCaptcha {
         $this->GdFgColor = imagecolorallocate($this->im, $color[0], $color[1], $color[2]);
 
         // Shadow color
-        if (!empty($this->shadowColor)) {
+        if (!empty($this->shadowColor) && is_array($this->shadowColor) && sizeof($this->shadowColor) >= 3) {
             $this->GdShadowColor = imagecolorallocate($this->im,
                 $this->shadowColor[0],
                 $this->shadowColor[1],
