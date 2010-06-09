@@ -83,7 +83,7 @@ class SimpleCaptcha {
     /** Height of the image */
     public $height = 70;
 
-    /** Dictionary word file (empty for randnom text) */
+    /** Dictionary word file (empty for random text) */
     public $wordsFile = 'words/en.php';
 
     /**
