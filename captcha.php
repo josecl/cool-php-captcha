@@ -23,6 +23,7 @@ $captcha = new SimpleCaptcha();
 //$captcha->wordsFile = 'words/es.php';
 //$captcha->session_var = 'secretword';
 //$captcha->imageFormat = 'png';
+//$captcha->lineWidth = 3;
 //$captcha->scale = 3; $captcha->blur = true;
 //$captcha->resourcesPath = "/var/cool-php-captcha/resources";
 
@@ -121,6 +122,9 @@ class SimpleCaptcha {
     /** Shadow color in RGB-array or null */
     public $shadowColor = null; //array(0, 0, 0);
 
+    /** Horizontal line through the text */
+    public $lineWidth = 0;
+
     /**
      * Font configuration
      *
@@ -204,6 +208,9 @@ class SimpleCaptcha {
         $_SESSION[$this->session_var] = $text;
 
         /** Transformations */
+        if (!empty($this->lineWidth)) {
+            $this->WriteLine();
+        }
         $this->WaveImage();
         if ($this->blur && function_exists('imagefilter')) {
             imagefilter($this->im, IMG_FILTER_GAUSSIAN_BLUR);
@@ -374,6 +381,23 @@ class SimpleCaptcha {
 
 
 
+    /**
+     * Horizontal line insertion
+     */
+    protected function WriteLine() {
+
+        $x1 = $this->width*$this->scale*.15;
+        $x2 = $this->textFinalX;
+        $y1 = rand($this->height*$this->scale*.40, $this->height*$this->scale*.65);
+        $y2 = rand($this->height*$this->scale*.40, $this->height*$this->scale*.65);
+        $width = $this->lineWidth/2*$this->scale;
+
+        for ($i = $width*-1; $i <= $width; $i++) {
+            imageline($this->im, $x1, $y1+$i, $x2, $y2+$i, $this->GdFgColor);
+        }
+    }
+
+
 
 
     /**
@@ -412,6 +436,8 @@ class SimpleCaptcha {
                 $this->GdFgColor, $fontfile, $letter);
             $x += ($coords[2]-$x) + ($fontcfg['spacing']*$this->scale);
         }
+
+        $this->textFinalX = $x;
     }
 
 
