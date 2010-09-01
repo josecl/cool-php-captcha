@@ -83,7 +83,7 @@ HTML;
     id="change-image">Not readable? Change text.</a><br/><br/>
 
 
-<input type="text" name="captcha" id="captcha-form" /><br/>
+<input type="text" name="captcha" id="captcha-form" autocomplete="off" /><br/>
 <input type="submit" />
 
 </form>
