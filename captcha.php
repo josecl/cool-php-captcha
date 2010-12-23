@@ -346,6 +346,10 @@ class SimpleCaptcha {
             $wordsfile = $this->resourcesPath.'/'.$this->wordsFile;
         }
 
+        if (!file_exists($wordsfile)) {
+            return false;
+        }
+
         $fp     = fopen($wordsfile, "r");
         $length = strlen(fgets($fp));
         if (!$length) {
