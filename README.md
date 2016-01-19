@@ -1,5 +1,7 @@
 # cool-php-captcha
-Automatically exported from code.google.com/p/cool-php-captcha
+This is the official GitHub project from code.google.com/p/cool-php-captcha
+
+
 
 This project generates friendly captcha images. This project provides the SimpleCaptcha class.
 Some fetures are: Background and foreground colors, dictionary words, non-dictionary random words, blur, shadows, JPEG and PNG support.
