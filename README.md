@@ -6,7 +6,10 @@ Some fetures are: Background and foreground colors, dictionary words, non-dictio
 
 
 Basic example:
+--------------
 
+
+```
 session_start();
 $captcha = new SimpleCaptcha();
 // Change configuration...
@@ -14,6 +17,7 @@ $captcha = new SimpleCaptcha();
 //$captcha->wordsFile = 'words/es.txt'; // Enable spanish words dictionary
 //$captcha->session_var = 'secretword'; // Changes the session variable from 'captcha' to 'secretword'
 $captcha->CreateImage();
+```
 
 ... will output an image.
 
@@ -21,9 +25,11 @@ $captcha->CreateImage();
 
 You can validate the php captcha with: (case-insensitive version)
 
+```
 if (empty($_SESSION['captcha']) || strtolower(trim($_REQUEST['captcha'])) != $_SESSION['captcha']) {
     return "Invalid captcha";
 }
+```
 
 You can see a live example here: http://joserodriguez.cl/cool-php-captcha
 
