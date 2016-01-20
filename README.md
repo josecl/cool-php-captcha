@@ -7,8 +7,8 @@ This project generates friendly captcha images. This project provides the Simple
 Some fetures are: Background and foreground colors, dictionary words, non-dictionary random words, blur, shadows, JPEG and PNG support.
 
 
-Basic example:
---------------
+Basic example
+-------------
 
 
 ```php
@@ -22,6 +22,7 @@ $captcha->CreateImage();
 ```
 
 ... will output an image, for example:
+<br>
 ![http://cool-php-captcha.googlecode.com/files/example.jpg](http://cool-php-captcha.googlecode.com/files/example.jpg)
 
 
@@ -37,6 +38,11 @@ if (empty($_SESSION['captcha']) || strtolower(trim($_REQUEST['captcha'])) != $_S
 You can see a live example here: http://joserodriguez.cl/cool-php-captcha
 
 
+More examples
+-------------
+Background and foreground colors, dictionary words, non-dictionary random words, blur, shadows, JPEG and PNG support:<br>
+<br>
+<img src='http://cool-php-captcha.googlecode.com/files/examples.jpg' />
 
 
 
