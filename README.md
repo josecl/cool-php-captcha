@@ -21,7 +21,8 @@ $captcha = new SimpleCaptcha();
 $captcha->CreateImage();
 ```
 
-... will output an image.
+... will output an image, for example:
+![http://cool-php-captcha.googlecode.com/files/example.jpg](http://cool-php-captcha.googlecode.com/files/example.jpg)
 
 
 
