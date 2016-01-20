@@ -1,4 +1,24 @@
-<?php session_start(); ?>
+<?php
+/**
+ * Sample script for CAPTCHA generation and validation
+ *
+ * @author  Jose Rodriguez <josecl@gmail.com>
+ * @license GPLv3
+ * @link    https://github.com/josecl/cool-php-captcha
+ * @package captcha
+ * @version 0.3.2
+ *
+ *
+ * This is an example file with a simplified implementation
+ * of the captcha for demonstration purposes.
+ *
+ */
+
+
+session_start();
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

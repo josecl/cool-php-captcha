@@ -2,11 +2,11 @@
 /**
  * Script para la generación de CAPTCHAS
  *
- * @author  Jose Rodriguez <jose.rodriguez@exec.cl>
+ * @author  Jose Rodriguez <josecl@gmail.com>
  * @license GPLv3
- * @link    http://code.google.com/p/cool-php-captcha
+ * @link    https://github.com/josecl/cool-php-captcha
  * @package captcha
- * @version 0.3
+ * @version 0.3.2
  *
  */
 
