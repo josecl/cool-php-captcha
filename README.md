@@ -11,7 +11,7 @@ Basic example:
 --------------
 
 
-```
+```php
 session_start();
 $captcha = new SimpleCaptcha();
 // Change configuration...
@@ -27,7 +27,7 @@ $captcha->CreateImage();
 
 You can validate the php captcha with: (case-insensitive version)
 
-```
+```php
 if (empty($_SESSION['captcha']) || strtolower(trim($_REQUEST['captcha'])) != $_SESSION['captcha']) {
     return "Invalid captcha";
 }
