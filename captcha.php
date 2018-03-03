@@ -77,6 +77,15 @@ $captcha->CreateImage();
  */
 class SimpleCaptcha {
 
+    /** 
+     * Difficulty level (if used, keep 'Wave configuracion' on default)
+     * normal = 1 
+     * closer to 0 is more easy, for ex: 0.4
+     * closer to 2 is more hard, for ex: 1.8
+     * smaller then 0 and bigger than 2 is caped to min or max
+     */
+    public $difficulty = 1;
+
     /** Width of the image */
     public $width  = 200;
 
@@ -196,6 +205,10 @@ class SimpleCaptcha {
 
     public function CreateImage() {
         $ini = microtime(true);
+
+        // cap difficulty
+        if($this->difficulty >2) $this->difficulty = 2;
+        if($this->difficulty<=0) $this->difficulty = 0.1;
 
         /** Initialization */
         $this->ImageAllocate();
@@ -426,7 +439,7 @@ class SimpleCaptcha {
         $y      = round(($this->height*27/40)*$this->scale);
         $length = strlen($text);
         for ($i=0; $i<$length; $i++) {
-            $degree   = rand($this->maxRotation*-1, $this->maxRotation);
+            $degree   = rand($this->maxRotation*-1, $this->maxRotation)*$this->difficulty;
             $fontsize = rand($fontcfg['minSize'], $fontcfg['maxSize'])*$this->scale*$fontSizefactor;
             $letter   = substr($text, $i, 1);
 
@@ -450,9 +463,14 @@ class SimpleCaptcha {
      * Wave filter
      */
     protected function WaveImage() {
+        // create wave difficulty
+        $wdf = 1;
+        if($this->difficulty<1) $wdf = 1/$this->difficulty*(0.9/$this->difficulty);
+        if($this->difficulty>1) $wdf = (1/($this->difficulty*1.7))+0.5;
+
         // X-axis wave generation
-        $xp = $this->scale*$this->Xperiod*rand(1,3);
-        $k = rand(0, 100);
+        $xp = $this->scale*$this->Xperiod*rand(1,3) * $wdf;
+        $k = rand(1, 100);
         for ($i = 0; $i < ($this->width*$this->scale); $i++) {
             imagecopy($this->im, $this->im,
                 $i-1, sin($k+$i/$xp) * ($this->scale*$this->Xamplitude),
@@ -461,7 +479,7 @@ class SimpleCaptcha {
 
         // Y-axis wave generation
         $k = rand(0, 100);
-        $yp = $this->scale*$this->Yperiod*rand(1,2);
+        $yp = $this->scale*($this->Yperiod)*rand(1,2) * $wdf; 
         for ($i = 0; $i < ($this->height*$this->scale); $i++) {
             imagecopy($this->im, $this->im,
                 sin($k+$i/$yp) * ($this->scale*$this->Yamplitude), $i-1,
