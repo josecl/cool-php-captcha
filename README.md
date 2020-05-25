@@ -1,4 +1,12 @@
 # cool-php-captcha
+
+**⚠️This project is not maintained anymore.⚠️**
+
+**I suggest use a modern and secure alterative, for example: reCAPTCHA.**
+
+
+
+
 This is the official GitHub project from code.google.com/p/cool-php-captcha
 
 
